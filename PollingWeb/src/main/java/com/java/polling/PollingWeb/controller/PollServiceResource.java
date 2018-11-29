@@ -40,19 +40,6 @@ public class PollServiceResource {
         return questions;
     }
 
-    /*@GetMapping("/getQuestions")
-    public QuestionPojo retrieveandSet() {
-        QuestionPojo pojo = new QuestionPojo();
-        pojo.setChoices(new HashSet<PollChoices>(pollChoicesRepository.findAll()));
-        Iterable<PollQuestion> question =pollQuestionRepository.findAll();
-        for (PollQuestion ques: question
-             ) {
-            pojo.setPublished_at(ques.getPublished_at());
-            pojo.setQuestion(ques.getQuestion());
-        }
-        return pojo;
-    }*/
-
     private List<QuestionPojo> fetchResult(){
         List<QuestionPojo> returnResult = new ArrayList<QuestionPojo>();
         QuestionPojo pojo = new QuestionPojo();
@@ -77,16 +64,18 @@ public class PollServiceResource {
 
         PollQuestion pollingSaved = new PollQuestion();
 
-        for (PollChoices p: result
+       /* for (PollChoices p: result
              ) {
-            /*PollChoices item = p;
+            PollChoices item = p;
             String choice = item.getChoice();
             int vote = Collections.frequency(result, p.getChoice());
             System.out.println(item);
-            PollChoices choiceSaved = pollChoicesRepository.save(new PollChoices(choice,vote));*/
-            question.setPublished_at(new Date());
-            pollingSaved  = pollQuestionRepository.save(question);
-        }
+            //PollChoices choiceSaved = pollChoicesRepository.save(new PollChoices(choice,vote));
+
+
+        }*/
+        question.setPublished_at(new Date());
+        pollingSaved  = pollQuestionRepository.save(question);
 
 
         return fetchResult();
